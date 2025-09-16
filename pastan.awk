@@ -1,7 +1,13 @@
-{ sub(/\r$/, "")  # Delete windows CR
+NR >= 889 && NR <= 60097 { 
+  sub(/\r$/, "")  # Delete windows CR
   if ($0 ~ /^[[:space:]]*$/) next
 
   if ($0 ~ /^[0-9]{4}$/) {
+    if (imi != "") {
+      print imi
+      imi = ""
+    }
+
     word_number = $0
     flag = 1  
     printf("\n")
@@ -23,8 +29,11 @@
     next
   }
 
-  if (flag == 3 && $0 !~ /^[0-9]{4}$/) {
-    imi = $0
-    print imi
+  if (flag == 3) {
+    imi = imi " " $0
   }
+}
+
+END {
+  if (imi != "") print imi
 }
