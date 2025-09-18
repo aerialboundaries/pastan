@@ -1,0 +1,6 @@
+出る度、品詞を追加
+パス単をjsonにする
+Sqlite3に取り込み
+番号  word_number word  pronunce  meaning 品詞  出る度
+Webアプリ化
+
